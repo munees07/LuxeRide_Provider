@@ -1,9 +1,9 @@
 import 'dart:io';
-
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 
 enum DataBases { carDataBase, bikeDataBase, bookingsDataBase }
+
 enum Pack { daily, monthly }
 
 class AddProvider extends ChangeNotifier {
@@ -37,6 +37,11 @@ class AddProvider extends ChangeNotifier {
     }
 
     selectedImage = File(returnImage.path);
+    notifyListeners();
+  }
+
+  void clearSelectedImage() {
+    selectedImage = null;
     notifyListeners();
   }
 }

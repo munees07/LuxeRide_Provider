@@ -3,7 +3,6 @@ import 'package:luxeride/model/bike_model/bikes_model.dart';
 import 'package:luxeride/model/bookings_model/bookings_model.dart';
 import 'package:luxeride/model/car_model/cars_model.dart';
 import 'package:luxeride/services/functions/crud_functions.dart';
-
 import 'add_provider.dart';
 
 class DbProvider extends ChangeNotifier {
@@ -16,9 +15,7 @@ class DbProvider extends ChangeNotifier {
 
   Future<void> addVehicle(DataBases database, dynamic vehicle) async {
     _vehicleservice.adding(database, vehicle);
-
     await getVehicle(database);
-    notifyListeners();
   }
 
   Future<void> getVehicle(DataBases database) async {
@@ -35,7 +32,6 @@ class DbProvider extends ChangeNotifier {
 
   Future<void> editVehicle(DataBases dataBases, value, index) async {
     await _vehicleservice.edit(dataBases, index, value);
-    notifyListeners();
     getVehicle(dataBases);
   }
 

@@ -6,7 +6,7 @@ import 'package:luxeride/view/screens/splash.dart';
 import 'package:luxeride/view/widgets/global_widgets.dart';
 
 class SignUp extends StatelessWidget {
-   SignUp({super.key});
+  SignUp({super.key});
 
   final _formkey = GlobalKey<FormState>();
 
@@ -14,22 +14,21 @@ class SignUp extends StatelessWidget {
 
   final passwordcontroller = TextEditingController();
 
-  void login(BuildContext context) async {
+  void login() async {
     String username = usernamecontroller.text;
     String password = passwordcontroller.text;
 
     if (username == usernamecontroller.text &&
         password == passwordcontroller.text) {
       var sharedPref = await SharedPreferences.getInstance();
-      sharedPref.setBool(SplashScreenState.KEYLOGIN, true);
+      sharedPref.setBool(SplashScreenState.keyLogin, true);
 
-      // ignore: use_build_context_synchronously
       Navigator.pushReplacement(
-        context,
+        _formkey.currentContext!,
         MaterialPageRoute(
             builder: (context) => Login(
-                username: usernamecontroller.text,
-                password: passwordcontroller.text)),
+                signupusername: usernamecontroller.text,
+                signuppassword: passwordcontroller.text)),
       );
     }
   }
@@ -98,7 +97,7 @@ class SignUp extends StatelessWidget {
             FilledButtonWidget(
                 onPressedButton: () {
                   if (_formkey.currentState!.validate()) {
-                    login(context);
+                    login();
                   }
                 },
                 buttontext: 'SIGN UP')

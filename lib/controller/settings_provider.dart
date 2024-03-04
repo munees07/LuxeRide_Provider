@@ -3,11 +3,11 @@ import 'package:hive/hive.dart';
 import 'package:luxeride/model/bike_model/bikes_model.dart';
 import 'package:luxeride/model/bookings_model/bookings_model.dart';
 import 'package:luxeride/model/car_model/cars_model.dart';
+import 'package:luxeride/view/screens/signup.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
-class SettingsProvider extends ChangeNotifier{
-
-  void dialoguebox(BuildContext context) {
+class SettingsProvider extends ChangeNotifier {
+  void resetdialoguebox(BuildContext context) {
     showDialog(
         context: context,
         useSafeArea: true,
@@ -17,19 +17,51 @@ class SettingsProvider extends ChangeNotifier{
               actions: [
                 TextButton(
                     onPressed: () {
-                      
-                        Hive.box<BikesModel>('bikeDb').clear();
-                        Hive.box<CarsModel>('carDb').clear();
-                        Hive.box<BookingsModel>('bookingsDb').clear();
+                      Hive.box<BikesModel>('bikeDb').clear();
+                      Hive.box<CarsModel>('carDb').clear();
+                      Hive.box<BookingsModel>('bookingsDb').clear();
                       notifyListeners();
                       Navigator.pop(context);
                     },
-                    child: const Text('OK',style: TextStyle(color: Colors.red),)),
+                    child: const Text(
+                      'OK',
+                      style: TextStyle(color: Colors.red),
+                    )),
                 TextButton(
                     onPressed: () {
                       Navigator.pop(context);
                     },
-                    child: const Text('Cancel',style: TextStyle(color: Colors.black)))
+                    child: const Text('Cancel',
+                        style: TextStyle(color: Colors.black)))
+              ],
+            ));
+  }
+
+  void logoutDialogueBox(BuildContext context) {
+    showDialog(
+        context: context,
+        useSafeArea: true,
+        builder: (context) => AlertDialog(
+              scrollable: true,
+              content: const Text('Are you Sure?'),
+              actions: [
+                TextButton(
+                    onPressed: () {
+                      logOut();
+                      Navigator.of(context).pushAndRemoveUntil(
+                          MaterialPageRoute(builder: (context) => SignUp()),
+                          (route) => false);
+                    },
+                    child: const Text(
+                      'OK',
+                      style: TextStyle(color: Colors.red),
+                    )),
+                TextButton(
+                    onPressed: () {
+                      Navigator.pop(context);
+                    },
+                    child: const Text('Cancel',
+                        style: TextStyle(color: Colors.black)))
               ],
             ));
   }

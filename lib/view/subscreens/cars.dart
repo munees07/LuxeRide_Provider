@@ -9,10 +9,8 @@ import 'package:luxeride/controller/db_provider.dart';
 import 'package:luxeride/controller/search_provider.dart';
 import 'package:luxeride/model/car_model/cars_model.dart';
 import 'package:luxeride/view/subscreens/car_editscreen.dart';
-import 'package:luxeride/view/subscreens/piechart.dart';
 import 'package:luxeride/view/screens/vehicle_details.dart';
 import 'package:provider/provider.dart';
-
 import '../../controller/add_provider.dart';
 
 class CarPage extends StatelessWidget {
@@ -96,13 +94,6 @@ class CarPage extends StatelessWidget {
             itemCount: carlist.length,
             itemBuilder: (context, index) {
               final data = carlist[index];
-              carSum.add(data.priceDay);
-              double totalcar = carSum
-                  .reduce(
-                    (value, element) => value + element,
-                  )
-                  .toDouble();
-              Chart.carvalue = totalcar;
               return Column(
                 children: [
                   Slidable(
@@ -143,8 +134,6 @@ class CarPage extends StatelessWidget {
                                                 .deleteVehicle(
                                                     DataBases.carDataBase,
                                                     index);
-                                            // delete(
-                                            //     DataBases.carDataBase, index);
                                             Navigator.pop(context);
                                           },
                                           child: const Text(

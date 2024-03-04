@@ -6,10 +6,10 @@ import 'package:luxeride/view/screens/splash.dart';
 import 'package:luxeride/view/widgets/global_widgets.dart';
 
 class Login extends StatelessWidget {
-  Login({super.key, this.username, this.password});
+   Login({super.key, this.signupusername, this.signuppassword});
 
-  final String? username;
-  final String? password;
+  final String? signupusername;
+  final String? signuppassword;
 
   final _formkey = GlobalKey<FormState>();
 
@@ -21,12 +21,10 @@ class Login extends StatelessWidget {
     String username = usernamecontroller.text;
     String password = passwordcontroller.text;
 
-    if (username == username && password == password) {
+    if (username == signupusername && password == signuppassword) {
       var sharedPref = await SharedPreferences.getInstance();
-      sharedPref.setBool(SplashScreenState.KEYLOGIN, true);
+      sharedPref.setBool(SplashScreenState.keyLogin, true);
 
-      
-      // ignore: use_build_context_synchronously
       Navigator.pushReplacement(
         _formkey.currentContext!,
         MaterialPageRoute(builder: (context) => const BottomNav()),

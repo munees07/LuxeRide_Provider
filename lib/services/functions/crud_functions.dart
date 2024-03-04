@@ -2,7 +2,6 @@ import 'package:hive_flutter/hive_flutter.dart';
 import 'package:luxeride/model/bike_model/bikes_model.dart';
 import 'package:luxeride/model/bookings_model/bookings_model.dart';
 import 'package:luxeride/model/car_model/cars_model.dart';
-
 import '../../controller/add_provider.dart';
 
 class VehicleDb {

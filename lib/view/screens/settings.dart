@@ -2,7 +2,6 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 import 'package:luxeride/controller/settings_provider.dart';
-import 'package:luxeride/view/screens/signup.dart';
 import 'package:luxeride/view/subscreens/about.dart';
 import 'package:luxeride/view/subscreens/piechart.dart';
 import 'package:luxeride/view/subscreens/privacy.dart';
@@ -53,25 +52,22 @@ class Profile extends StatelessWidget {
                     text: 'CHART',
                     onpressed: () {
                       Navigator.of(context).push(MaterialPageRoute(
-                          builder: (context) => const MyPieChart()));
+                          builder: (context) => const PieChartPage()));
                     }),
                 const Gap(30),
                 SettingsTile(
                     icon: const Icon(Icons.restart_alt),
                     text: 'RESET',
                     onpressed: () {
-                      provider.dialoguebox(context);
+                      provider.resetdialoguebox(context);
                     }),
                 const Gap(30),
                 SettingsTile(
                     icon: const Icon(Icons.logout),
                     text: 'LOGOUT',
                     onpressed: () {
-                      provider.logOut();
-                      Navigator.of(context).pushAndRemoveUntil(
-                          MaterialPageRoute(
-                              builder: (context) =>  SignUp()),
-                          (route) => false);
+                      provider.logoutDialogueBox(context);
+                      
                     }),
               ],
             ),

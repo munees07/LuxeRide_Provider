@@ -11,8 +11,8 @@ class SplashScreen extends StatefulWidget {
 }
 
 class SplashScreenState extends State<SplashScreen> {
-  // ignore: constant_identifier_names
-  static const String KEYLOGIN = "Login";
+
+  static const String keyLogin = "Login";
 
   @override
   void initState() {
@@ -31,7 +31,7 @@ class SplashScreenState extends State<SplashScreen> {
   void toGo() async {
     var sharedPref = await SharedPreferences.getInstance();
 
-    var isLoggedIn = sharedPref.getBool(KEYLOGIN);
+    var isLoggedIn = sharedPref.getBool(keyLogin);
 
     Future.delayed(const Duration(milliseconds: 1), () {
       if (isLoggedIn != null) {

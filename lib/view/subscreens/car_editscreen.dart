@@ -8,7 +8,6 @@ import 'package:luxeride/model/car_model/cars_model.dart';
 import 'package:luxeride/view/widgets/addscreen_widgets.dart';
 import 'package:luxeride/view/widgets/global_widgets.dart';
 import 'package:provider/provider.dart';
-
 import '../../controller/add_provider.dart';
 
 class CarEditScreen extends StatefulWidget {

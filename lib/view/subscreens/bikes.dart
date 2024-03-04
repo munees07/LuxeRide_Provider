@@ -8,10 +8,8 @@ import 'package:luxeride/controller/db_provider.dart';
 import 'package:luxeride/controller/search_provider.dart';
 import 'package:luxeride/model/bike_model/bikes_model.dart';
 import 'package:luxeride/view/subscreens/bike_editscreen.dart';
-import 'package:luxeride/view/subscreens/piechart.dart';
 import 'package:luxeride/view/screens/vehicle_details.dart';
 import 'package:provider/provider.dart';
-
 import '../../controller/add_provider.dart';
 
 class BikePage extends StatelessWidget {
@@ -94,13 +92,6 @@ class BikePage extends StatelessWidget {
             itemCount: bikelist.length,
             itemBuilder: (context, index) {
               final data = bikelist[index];
-              bikeSum.add(data.priceDay);
-              double totalbike = bikeSum
-                  .reduce(
-                    (value, element) => value + element,
-                  )
-                  .toDouble();
-              Chart.bikevalue = totalbike;
               return Column(
                 children: [
                   Slidable(

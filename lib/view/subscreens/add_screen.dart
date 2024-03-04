@@ -57,9 +57,6 @@ class AddScreen extends StatelessWidget {
                           value: DataBases.bikeDataBase, child: Text('Bikes')),
                     ],
                     onChanged: (value) {
-                      // setState(() {
-                      //   addScreenProvider.selectedDatabase = value!;
-                      // });
                       addScreenProvider.selectedDb(value);
                     },
                   ),
@@ -163,30 +160,32 @@ class AddScreen extends StatelessWidget {
 
   void onAddClicked(BuildContext context) {
     final addButtonProvider = Provider.of<AddProvider>(context, listen: false);
-        final company = addButtonProvider.companycontroller.text.trim();
-      final model = addButtonProvider.modelcontroller.text.trim();
-      final power = addButtonProvider.powercontroller.text.trim();
-      final torque = addButtonProvider.torquecontroller.text.trim();
-      final dailyprice = addButtonProvider.dailypricecontroller.text.trim();
-      final monthlyprice = addButtonProvider.monthlypricecontroller.text.trim();
-      if (company.isEmpty ||
-          model.isEmpty ||
-          power.isEmpty ||
-          torque.isEmpty ||
-          dailyprice.isEmpty ||
-          monthlyprice.isEmpty) {
-        return;
-      }
-      addButtonProvider.companycontroller.clear();
-      addButtonProvider.modelcontroller.clear();
-      addButtonProvider.powercontroller.clear();
-      addButtonProvider.torquecontroller.clear();
-      addButtonProvider.dailypricecontroller.clear();
-      addButtonProvider.monthlypricecontroller.clear();
-      addButtonProvider.selectedImage==null;
+    final company = addButtonProvider.companycontroller.text.trim();
+    final model = addButtonProvider.modelcontroller.text.trim();
+    final power = addButtonProvider.powercontroller.text.trim();
+    final torque = addButtonProvider.torquecontroller.text.trim();
+    final dailyprice = addButtonProvider.dailypricecontroller.text.trim();
+    final monthlyprice = addButtonProvider.monthlypricecontroller.text.trim();
+    final image = addButtonProvider.selectedImage!.path;
+    if (company.isEmpty ||
+        model.isEmpty ||
+        power.isEmpty ||
+        torque.isEmpty ||
+        dailyprice.isEmpty ||
+        monthlyprice.isEmpty ||
+        image.isEmpty) {
+      return;
+    }
+    addButtonProvider.companycontroller.clear();
+    addButtonProvider.modelcontroller.clear();
+    addButtonProvider.powercontroller.clear();
+    addButtonProvider.torquecontroller.clear();
+    addButtonProvider.dailypricecontroller.clear();
+    addButtonProvider.monthlypricecontroller.clear();
+    addButtonProvider.clearSelectedImage();
 
-      log('$company $model $power $torque $dailyprice $monthlyprice');
-    if (addButtonProvider.selectedDatabase ==DataBases.carDataBase) {
+    log('$company $model $power $torque $dailyprice $monthlyprice');
+    if (addButtonProvider.selectedDatabase == DataBases.carDataBase) {
       final car = CarsModel(
           companyName: company,
           modelName: model,
@@ -194,10 +193,9 @@ class AddScreen extends StatelessWidget {
           torque: int.parse(torque),
           priceDay: int.parse(dailyprice),
           priceMonth: int.parse(monthlyprice),
-          image: addButtonProvider.selectedImage!.path);
+          image: image);
       Provider.of<DbProvider>(context, listen: false)
           .addVehicle(DataBases.carDataBase, car);
-      // add(DataBases.carDataBase, car);
     } else if (addButtonProvider.selectedDatabase == DataBases.bikeDataBase) {
       final bike = BikesModel(
           companyName: company,
@@ -207,7 +205,6 @@ class AddScreen extends StatelessWidget {
           priceDay: int.parse(dailyprice),
           priceMonth: int.parse(monthlyprice),
           image: addButtonProvider.selectedImage!.path);
-      // add(DataBases.bikeDataBase, bike);
       Provider.of<DbProvider>(context, listen: false)
           .addVehicle(DataBases.bikeDataBase, bike);
     }
