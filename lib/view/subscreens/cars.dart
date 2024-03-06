@@ -1,4 +1,3 @@
-import 'dart:developer';
 import 'dart:io';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -14,11 +13,10 @@ import 'package:provider/provider.dart';
 import '../../controller/add_provider.dart';
 
 class CarPage extends StatelessWidget {
-   CarPage({super.key});
+   const CarPage({super.key});
 
   @override
   Widget build(BuildContext context) {
-    log('aaaa');
     final searchProvider = Provider.of<SearchProvider>(context, listen: false);
     Provider.of<DbProvider>(context, listen: false)
         .getVehicle(DataBases.carDataBase);
@@ -76,8 +74,6 @@ class CarPage extends StatelessWidget {
       ),
     );
   }
-
-  final List<int> carSum = [];
 
   Widget carListwidget(List<CarsModel> carlist) {
     return carlist.isEmpty

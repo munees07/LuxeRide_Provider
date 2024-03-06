@@ -13,7 +13,7 @@ import 'package:provider/provider.dart';
 import '../../controller/add_provider.dart';
 
 class BikePage extends StatelessWidget {
-  BikePage({super.key});
+  const BikePage({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -74,8 +74,6 @@ class BikePage extends StatelessWidget {
       ),
     );
   }
-
-  final List<int> bikeSum = [];
 
   Widget bikeListwidget(List<BikesModel> bikelist) {
     return bikelist.isEmpty

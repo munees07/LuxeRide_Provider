@@ -14,8 +14,6 @@ class AddScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    log('zzz');
-
     return Scaffold(
       body: Consumer<AddProvider>(builder: (context, addScreenProvider, child) {
         return Form(

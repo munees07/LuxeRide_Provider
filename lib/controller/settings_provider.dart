@@ -48,9 +48,9 @@ class SettingsProvider extends ChangeNotifier {
                 TextButton(
                     onPressed: () {
                       logOut();
-                      Navigator.of(context).pushAndRemoveUntil(
-                          MaterialPageRoute(builder: (context) => SignUp()),
-                          (route) => false);
+                      Navigator.of(context).pushReplacement(
+                          MaterialPageRoute(builder: (context) => SignUp())
+                          );
                     },
                     child: const Text(
                       'OK',

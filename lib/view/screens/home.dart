@@ -45,7 +45,7 @@ class Home extends StatelessWidget {
               ),
             ),
             const Gap(20),
-            Expanded(child: TabBarView(children: [CarPage(), BikePage()]))
+            const Expanded(child: TabBarView(children: [CarPage(), BikePage()]))
           ],
         ),
       ),

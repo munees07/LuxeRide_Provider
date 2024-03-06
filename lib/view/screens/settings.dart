@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
+import 'package:luxeride/controller/bottombar_provider.dart';
 import 'package:luxeride/controller/settings_provider.dart';
 import 'package:luxeride/view/subscreens/about.dart';
 import 'package:luxeride/view/subscreens/piechart.dart';
@@ -67,7 +68,7 @@ class Profile extends StatelessWidget {
                     text: 'LOGOUT',
                     onpressed: () {
                       provider.logoutDialogueBox(context);
-                      
+                      Provider.of<BottomBarProvider>(context,listen: false).currentIndex=0;
                     }),
               ],
             ),
