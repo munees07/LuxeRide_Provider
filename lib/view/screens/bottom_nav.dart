@@ -8,7 +8,7 @@ class BottomNav extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     
-    final provider = Provider.of<BottomBarProvider>(context,listen: false);
+    final provider = Provider.of<BottomBarProvider>(context);
     return Scaffold(
       backgroundColor: const Color(0x00f3f5f7),
       body: provider.pages[provider.currentIndex],

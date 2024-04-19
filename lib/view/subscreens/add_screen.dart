@@ -202,7 +202,7 @@ class AddScreen extends StatelessWidget {
           torque: int.parse(torque),
           priceDay: int.parse(dailyprice),
           priceMonth: int.parse(monthlyprice),
-          image: addButtonProvider.selectedImage!.path);
+          image: image);
       Provider.of<DbProvider>(context, listen: false)
           .addVehicle(DataBases.bikeDataBase, bike);
     }
